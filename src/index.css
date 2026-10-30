@@ -1,0 +1,10 @@
+/* 1. Import the Roboto font from Google at the very top */
+@import url("https://googleapis.com");
+
+/* 2. Import Tailwind */
+@import "tailwindcss";
+
+/* 3. Register the font variable */
+@theme {
+  --font-roboto: "Roboto", sans-serif;
+}
