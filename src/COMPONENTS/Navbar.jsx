@@ -1,5 +1,6 @@
 import { Heart, ShoppingBag, User, Menu, Search, X } from "lucide-react";
 import React, { useState } from "react";
+// import logo from "../assets/logo.png";
 
 const Navbar = ({ isManuOpen, setisManuOpen }) => {
   const [search, setSearch] = useState("");
@@ -26,6 +27,7 @@ const Navbar = ({ isManuOpen, setisManuOpen }) => {
           {isManuOpen ? <X /> : <Menu />}
         </div>
         <div className=" sm:text-red-500 lg:text-purple-500 text-blue-500 font-bold text-2xl md:ml-5">
+          {/* <img src={logo} alt="company-logo-img" /> */}
           Cartivo
         </div>
         <div className="hidden text-gray-600 md:flex italic gap-5 lg:gap-10 md:font-normal md:text-lg font-semibold text-xl items-center">
