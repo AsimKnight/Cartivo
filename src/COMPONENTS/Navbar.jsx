@@ -1,6 +1,7 @@
 import { Heart, ShoppingBag, User, Menu, Search, X } from "lucide-react";
 import React, { useState } from "react";
-// import logo from "../assets/logo.png";
+// import logo from ".../assets/logo.png";
+import logo from "../../assets/logo.png";
 
 const Navbar = ({ isManuOpen, setisManuOpen }) => {
   const [search, setSearch] = useState("");
@@ -26,15 +27,19 @@ const Navbar = ({ isManuOpen, setisManuOpen }) => {
         <div className="md:hidden" onClick={handleManuClick}>
           {isManuOpen ? <X /> : <Menu />}
         </div>
-        <div className=" sm:text-red-500 lg:text-purple-500 text-blue-500 font-bold text-2xl md:ml-5">
-          {/* <img src={logo} alt="company-logo-img" /> */}
-          Cartivo
+        <div className=" sm:text-red-500 lg:text-purple-500 text-yellow-700 font-bold text-2xl md:ml-5">
+          <img
+            className="hidden md:block  border-blue-600 object-contain w-50 h-10"
+            src={logo}
+            alt="company-logo-img"
+          />
+          <span className="md:hidden">Cartivo</span>
         </div>
         <div className="hidden text-gray-600 md:flex italic gap-5 lg:gap-10 md:font-normal md:text-lg font-semibold text-xl items-center">
           <h2 className=" hover:text-stone-700 hover:border-b-2  hover:border-amber-300 cursor-pointer ">
             Shop
           </h2>
-          <h2 className=" hover:text-stone-700 hover:border-b-2 hover:border-amber-300 cursor-pointer">
+          <h2 className=" hover:text-stone-700 hover:border-b-2 hover:border-amber-300 cursor-pointer whitespace-nowrap">
             New Arrivals
           </h2>
           <h2 className=" hover:text-stone-700 hover:border-b-2 hover:border-amber-300 cursor-pointer">
