@@ -3,8 +3,9 @@ import { Star } from "lucide-react";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  // const [products2, setProducts2] = useState([]);
+  const [deals, setDeals] = useState([]);
 
+  // const [products2, setProducts2] = useState([]);
   const categories = [
     {
       name: "Men",
@@ -33,15 +34,26 @@ const Home = () => {
       //dummy json api
       const res = await fetch("https://dummyjson.com/products");
       const data = await res.json();
-      // console.log(data);
-      // setProducts(data);
-      // console.log(products);
 
-      // const res2 = await fetch("https://fakestoreapi.com/products");
-      // const data2 = await res2.json();
-      // console.log(data2);
-      // setProducts2(data2);
-      // console.log(products2);
+      console.log("data is  : ", data);
+
+      setProducts(data.products);
+      const dealsArray = data.products.filter((el) => {
+        console.log(el.discountPercentage);
+        return el.discountPercentage >= 12;
+      });
+      setDeals(dealsArray);
+
+      console.log("deals Array is ", dealsArray);
+      console.log(deals);
+
+      // function oldCode() {
+      //   // const res2 = await fetch("https://fakestoreapi.com/products");
+      //   // const data2 = await res2.json();
+      //   // console.log(data2);
+      //   // setProducts2(data2);
+      //   // console.log(products2);
+      // }
     }
     loadProduct();
   }, []);
@@ -119,14 +131,7 @@ const Home = () => {
   // );
   return (
     <div className="w-[99%] mx-auto ">
-      {" "}
-      {/*bg-[#e6f0ff]*/}
       <div className="hero-secion mt-20">
-        {/* <img
-          className="rounded-2xl hidden md:block lg:block xl:block w-[98%] h-160 mx-auto  mt-20 mb-5"
-          src="https://rukminim2.flixcart.com/fk-p-flap/3200/1560/image/2c833d8a2c5d2ff8.png?q=60"
-          alt="hero-section-img"
-        /> */}
         <div className="hidden md:block rounded-2xl w-[98%]  mx-auto">
           <img
             className="rounded-2xl w-full "
@@ -140,21 +145,47 @@ const Home = () => {
           alt="hero-section-img"
         />
       </div>
-      <div className="w-full flex md:flex-wrap my-5  gap-3  px-2 py-2 overflow-x-auto">
-        {categories.map((el) => (
-          <div className="shrink-0 w-[90%] h-70  bg-mauve-100 rounded-xl md:w-[49%] lg:w-[24%]">
-            <div className=" w-full h-[80%] ">
-              <img
-                className="w-full h-full object-cover rounded-t-xl"
-                src={el.imageUrl}
-                alt={el.name + "-image"}
-              />
+      <div className="my-5  px-2 py-2">
+        <h2 className="mb-3 font-semibold  text-[clamp(1.25rem,1.7vw,3rem)] px-2">
+          Shop By Categories
+        </h2>
+        <div className="overflow-x-auto w-full flex md:flex-wrap   gap-3   ">
+          {categories.map((el) => (
+            <div className="shrink-0 w-[90%] h-70  bg-mauve-100 rounded-xl md:w-[49%] lg:w-[24%] lg:hover:scale-102 lg:transition-all">
+              <div className=" w-full h-[80%] ">
+                <img
+                  className="w-full h-full object-cover rounded-t-xl"
+                  src={el.imageUrl}
+                  alt={el.name + "-image"}
+                />
+              </div>
+              <span className="flex justify-center items-center mt-3 font-semibold text-xl">
+                {el.name}
+              </span>
             </div>
-            <span className="flex justify-center items-center mt-3 font-semibold text-xl">
-              {el.name}
-            </span>
-          </div>
-        ))}
+          ))}
+        </div>
+      </div>
+      <div className="my-5  px-2 py-2">
+        <h2 className="mb-3 font-semibold  text-[clamp(1.25rem,1.7vw,3rem)] px-2">
+          Todays Best Deals
+        </h2>
+        <div className="overflow-x-auto w-full flex md:flex-wrap   gap-3   ">
+          {deals?.map((el) => (
+            <div className="shrink-0 w-[45%] h-50  bg-mauve-50 rounded-xl md:w-[32%] lg:w-[24%] lg:hover:scale-102 lg:transition-all">
+              <div className=" w-full h-[59%] ">
+                <img
+                  className="w-full h-full object-cover rounded-t-xl bg-blue-50"
+                  src={el.images[0]}
+                  alt={el.name + "-image"}
+                />
+              </div>
+              <span className="h-[30%] mx-auto flex justify-center items-center mt-3 font-semibold text-[clamp(1rem,2vw,3rem)]">
+                {el.title}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
