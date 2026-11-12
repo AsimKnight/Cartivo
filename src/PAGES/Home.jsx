@@ -130,7 +130,7 @@ const Home = () => {
   //   </div>
   // );
   return (
-    <div className="w-[99%] mx-auto ">
+    <div className="w-[99%] mx-auto h-999">
       <div className="hero-secion mt-20">
         <div className="hidden md:block rounded-2xl w-[98%]  mx-auto">
           <img
@@ -170,22 +170,33 @@ const Home = () => {
         <h2 className="mb-3 font-semibold  text-[clamp(1.25rem,1.7vw,3rem)] px-2">
           Todays Best Deals
         </h2>
-        <div className="overflow-x-auto w-full flex md:flex-wrap   gap-3   ">
+        <div className="  overflow-x-auto overflow-y-hidden w-full flex md:flex-wrap gap-3">
           {deals?.map((el) => (
-            <div className="shrink-0 w-[45%] h-50  bg-mauve-50 rounded-xl md:w-[32%] lg:w-[24%] lg:hover:scale-102 lg:transition-all">
-              <div className=" w-full h-[59%] ">
+            <div className="shrink-0 w-[45%] h-70  bg-mauve-50 rounded-xl md:w-[32%] lg:w-[24%] lg:hover:scale-102 lg:transition-all">
+              <div className=" w-full h-[55%] ">
                 <img
                   className="w-full h-full object-cover rounded-t-xl bg-blue-50"
                   src={el.images[0]}
                   alt={el.name + "-image"}
                 />
               </div>
-              <span className="h-[30%] mx-auto flex justify-center items-center mt-3 font-semibold text-[clamp(1rem,2vw,3rem)]">
-                {el.title}
-              </span>
+              <div className="h-[30%] ml-2 mt-1 flex flex-col">
+                <span className="mt-3 font-semibold text-[clamp(1rem,2vw,3rem)]">
+                  {el.title}
+                </span>
+                <div className="flex gap-2 items-center">
+                  <span className="text-green-600 font-semibold bg-white px-1 py0.5 rounded-md border border-black">
+                    {Math.floor(el.discountPercentage)}% Off
+                  </span>
+                  <span className="font-semibold bg-amber-300 px-2 py-0.5 rounded-md">
+                    {el.rating}
+                  </span>
+                </div>
+              </div>
             </div>
           ))}
         </div>
+        {/* <div className="h-100"></div> */}
       </div>
     </div>
   );
