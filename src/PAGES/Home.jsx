@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Star } from "lucide-react";
+import React, { useEffect, useState, useRef } from "react";
+import { ArrowRight, ArrowLeft, Star } from "lucide-react";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -28,6 +28,50 @@ const Home = () => {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM3ZD-YyseCb7iM1mGYw3tMlBmm7nvjh5bdWkEo-o4UQ&s=10",
     },
   ];
+
+  // const sliderRef = useRef(null);
+
+  // function slideRight() {
+  //   const slider = sliderRef.current;
+  //   const card = slider.querySelector(".product-card");
+
+  //   slider.scrollBy({
+  //     left: (card.offsetWidth + 16) * 2,
+  //     behavior: "smooth",
+  //   });
+  // }
+
+  // function slideLeft() {
+  //   const slider = sliderRef.current;
+  //   const card = slider.querySelector(".product-card");
+
+  //   slider.scrollBy({
+  //     left: -((card.offsetWidth + 16) * 2),
+  //     behavior: "smooth",
+  //   });
+  // }
+
+  const dealsContainerRef = useRef(null);
+
+  function slideLeft() {
+    const slider = dealsContainerRef.current;
+    const card = slider.querySelector(".deals-card");
+
+    slider.scrollBy({
+      left: (card.offsetWidth + 16) * 2,
+      behavior: "smooth",
+    });
+  }
+
+  function slideRight() {
+    const slider = dealsContainerRef.current;
+    const card = slider.querySelector(".deals-card");
+
+    slider.scrollBy({
+      left: -((card.offsetWidth + 16) * 2),
+      behavior: "smooth",
+    });
+  }
 
   useEffect(function () {
     async function loadProduct() {
@@ -167,12 +211,21 @@ const Home = () => {
         </div>
       </div>
       <div className="my-5  px-2 py-2">
-        <h2 className="mb-3 font-semibold  text-[clamp(1.25rem,1.7vw,3rem)] px-2">
-          Todays Best Deals
-        </h2>
-        <div className="  overflow-x-auto overflow-y-hidden w-full flex md:flex-wrap gap-3">
+        <div className="flex justify-between mr-2">
+          <h2 className="mb-3 font-semibold  text-[clamp(1.25rem,1.7vw,3rem)] px-2">
+            Todays Best Deals
+          </h2>
+          <div className="flex gap-2">
+            <ArrowLeft onClick={slideRight} />
+            <ArrowRight onClick={slideLeft} />
+          </div>
+        </div>
+        <div
+          ref={dealsContainerRef}
+          className="overflow-x-auto overflow-y-hidden w-full flex md:flex-wrap gap-3"
+        >
           {deals?.map((el) => (
-            <div className="shrink-0 w-[45%] h-75  bg-mauve-50 rounded-xl md:w-[32%] lg:w-[24%] lg:hover:scale-102 lg:transition-all">
+            <div className="deals-card  shrink-0 w-[45%] h-75  bg-mauve-50 rounded-xl md:w-[32%] lg:w-[24%] lg:hover:scale-102 lg:transition-all">
               <div className=" w-full h-[55%] ">
                 <img
                   className="w-full h-full object-cover rounded-t-xl bg-blue-50"
