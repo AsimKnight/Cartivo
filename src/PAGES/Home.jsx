@@ -215,26 +215,26 @@ const Home = () => {
           <h2 className="mb-3 font-semibold  text-[clamp(1.25rem,1.7vw,3rem)] px-2">
             Todays Best Deals
           </h2>
-          <div className="flex gap-2">
+          <div className="flex gap-2 md:hidden">
             <ArrowLeft onClick={slideRight} />
             <ArrowRight onClick={slideLeft} />
           </div>
         </div>
         <div
           ref={dealsContainerRef}
-          className="overflow-x-auto overflow-y-hidden w-full flex md:flex-wrap gap-3"
+          className=" py-3 overflow-x-auto overflow-y-hidden w-full flex md:flex-wrap gap-3"
         >
           {deals?.map((el) => (
-            <div className="deals-card  shrink-0 w-[45%] h-75  bg-mauve-50 rounded-xl md:w-[32%] lg:w-[24%] lg:hover:scale-102 lg:transition-all">
-              <div className=" w-full h-[55%] ">
+            <div className=" shadow-sm deals-card  shrink-0 w-[45%] h-75  bg-mauve-50 rounded-xl md:w-[32%] lg:w-[24%] lg:hover:scale-102 lg:transition-all">
+              <div className=" w-full h-[55%] md:h-[60%]">
                 <img
-                  className="w-full h-full object-cover rounded-t-xl bg-blue-50"
+                  className="w-full h-full object-cover md:object-contain rounded-t-xl bg-blue-50"
                   src={el.images[0]}
                   alt={el.name + "-image"}
                 />
               </div>
               <div className="h-[30%] ml-2 mt-1 flex flex-col">
-                <span className="mt-3 font-semibold text-[clamp(1rem,2vw,3rem)]">
+                <span className="mt-3 font-semibold text-base md:text-[1.3rem]">
                   {el.title}
                 </span>
                 <div className="flex gap-3 items-center mt-0.5">
@@ -244,7 +244,7 @@ const Home = () => {
                     <span className="font-normal"> Ratings</span>
                   </span>
                 </div>
-                <span className="bg-green-300 font-semibold  px-2 py-0.5 rounded-md w-[50%] mt-0.5">
+                <span className="bg-green-300 font-semibold  px-2 py-0.5 rounded-md w-[50%] md:w-20 mt-0.5">
                   {Math.floor(el.discountPercentage)}% Off
                 </span>
               </div>
