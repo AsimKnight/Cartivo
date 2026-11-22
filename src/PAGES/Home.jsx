@@ -1,5 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import { ArrowRight, ArrowLeft, Star } from "lucide-react";
+
+import CategoriesSection from "../COMPONENTS/CategoriesSection";
+import HeroImage from "../COMPONENTS/HeroImage";
+import BestDeals from "../COMPONENTS/BestDeals";
+import FeaturedProductSection from "../COMPONENTS/FeaturedProductSection";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -28,50 +32,6 @@ const Home = () => {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM3ZD-YyseCb7iM1mGYw3tMlBmm7nvjh5bdWkEo-o4UQ&s=10",
     },
   ];
-
-  // const sliderRef = useRef(null);
-
-  // function slideRight() {
-  //   const slider = sliderRef.current;
-  //   const card = slider.querySelector(".product-card");
-
-  //   slider.scrollBy({
-  //     left: (card.offsetWidth + 16) * 2,
-  //     behavior: "smooth",
-  //   });
-  // }
-
-  // function slideLeft() {
-  //   const slider = sliderRef.current;
-  //   const card = slider.querySelector(".product-card");
-
-  //   slider.scrollBy({
-  //     left: -((card.offsetWidth + 16) * 2),
-  //     behavior: "smooth",
-  //   });
-  // }
-
-  const dealsContainerRef = useRef(null);
-
-  function slideLeft() {
-    const slider = dealsContainerRef.current;
-    const card = slider.querySelector(".deals-card");
-
-    slider.scrollBy({
-      left: (card.offsetWidth + 16) * 2,
-      behavior: "smooth",
-    });
-  }
-
-  function slideRight() {
-    const slider = dealsContainerRef.current;
-    const card = slider.querySelector(".deals-card");
-
-    slider.scrollBy({
-      left: -((card.offsetWidth + 16) * 2),
-      behavior: "smooth",
-    });
-  }
 
   useEffect(function () {
     async function loadProduct() {
@@ -175,84 +135,10 @@ const Home = () => {
   // );
   return (
     <div className="w-[99%] mx-auto h-999">
-      <div className="hero-secion mt-20">
-        <div className="hidden md:block rounded-2xl w-[98%]  mx-auto">
-          <img
-            className="rounded-2xl w-full "
-            src="https://rukminim2.flixcart.com/fk-p-flap/3200/1560/image/2c833d8a2c5d2ff8.png?q=60"
-            alt=""
-          />
-        </div>
-        <img
-          className="rounded-xl block w-[96%] mx-auto object-cover md:hidden lg:hidden xl:hidden"
-          src="https://m.media-amazon.com/images/I/71oSj4j0cWL._AC_AIweblab1431263,T1_FMavif_SF1282.5,2052_QL54_.jpg?aicid=homepage-single-creative-card"
-          alt="hero-section-img"
-        />
-      </div>
-      <div className="my-5  px-2 py-2">
-        <h2 className="mb-3 font-semibold  text-[clamp(1.25rem,1.7vw,3rem)] px-2">
-          Shop By Categories
-        </h2>
-        <div className="overflow-x-auto w-full flex md:flex-wrap   gap-3   ">
-          {categories.map((el) => (
-            <div className="shrink-0 w-[90%] h-70  bg-mauve-100 rounded-xl md:w-[49%] lg:w-[24%] lg:hover:scale-102 lg:transition-all">
-              <div className=" w-full h-[80%] ">
-                <img
-                  className="w-full h-full object-cover rounded-t-xl"
-                  src={el.imageUrl}
-                  alt={el.name + "-image"}
-                />
-              </div>
-              <span className="flex justify-center items-center mt-3 font-semibold text-xl">
-                {el.name}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="my-5  px-2 py-2">
-        <div className="flex justify-between mr-2">
-          <h2 className="mb-3 font-semibold  text-[clamp(1.25rem,1.7vw,3rem)] px-2">
-            Todays Best Deals
-          </h2>
-          <div className="flex gap-2 md:hidden">
-            <ArrowLeft onClick={slideRight} />
-            <ArrowRight onClick={slideLeft} />
-          </div>
-        </div>
-        <div
-          ref={dealsContainerRef}
-          className=" py-3 overflow-x-auto overflow-y-hidden w-full flex md:flex-wrap gap-3"
-        >
-          {deals?.map((el) => (
-            <div className=" shadow-sm deals-card  shrink-0 w-[45%] h-75  bg-mauve-50 rounded-xl md:w-[32%] lg:w-[24%] lg:hover:scale-102 lg:transition-all">
-              <div className=" w-full h-[55%] md:h-[60%]">
-                <img
-                  className="w-full h-full object-cover md:object-contain rounded-t-xl bg-blue-50"
-                  src={el.images[0]}
-                  alt={el.name + "-image"}
-                />
-              </div>
-              <div className="h-[30%] ml-2 mt-1 flex flex-col">
-                <span className="mt-3 font-semibold text-base md:text-[1.3rem]">
-                  {el.title}
-                </span>
-                <div className="flex gap-3 items-center mt-0.5">
-                  <span className="font-semibold    py-0.5 rounded-md flex gap-1 items-center">
-                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    {el.rating.toFixed(1)}
-                    <span className="font-normal"> Ratings</span>
-                  </span>
-                </div>
-                <span className="bg-green-300 font-semibold  px-2 py-0.5 rounded-md w-[50%] md:w-20 mt-0.5">
-                  {Math.floor(el.discountPercentage)}% Off
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-        {/* <div className="h-100"></div> */}
-      </div>
+      <HeroImage />
+      <CategoriesSection categories={categories} />
+      <BestDeals deals={deals} setDeals={setDeals} />
+      <FeaturedProductSection products={products} />
     </div>
   );
 };

@@ -13,7 +13,7 @@ const Navbar = ({ isManuOpen, setisManuOpen }) => {
   return (
     <>
       {/* <div className=" w-full flex  bg-[#FFFFFF] py-5 px-2 items-center justify-between gap-3 before:absolute before:top-14 before:left-0 before:bg-blue-500 before:h-10 before:w-25 "> */}
-      <div className="fixed top-0 w-full flex  bg-[#FFFFFF] py-5 px-2 items-center justify-between gap-3 ">
+      <div className="fixed top-0 w-full flex  bg-[#FFFFFF] py-5 px-2 items-center justify-between gap-3 z-100">
         <div
           className={` md:hidden -translate-x-25 transition text-green-900  font-semibold absolute top-18 left-0 w-25 h-[200vh] bg-green-100 ${isManuOpen ? "translate-x-0" : ""}`}
         >
