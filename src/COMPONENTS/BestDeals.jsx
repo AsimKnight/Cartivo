@@ -50,7 +50,7 @@ const BestDeals = ({ deals, setDeals }) => {
             </div>
             <div className="h-[30%] ml-2 mt-1 flex flex-col">
               <span className="mt-3 font-semibold text-base md:text-[1.3rem]">
-                {el.title}
+                {el.title.slice(0, 18)}
               </span>
               <div className="flex gap-3 items-center mt-0.5">
                 <span className="font-semibold    py-0.5 rounded-md flex gap-1 items-center">
