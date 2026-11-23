@@ -17,14 +17,14 @@ const FeaturedProductSection = ({ products }) => {
   return (
     <div className="mx-auto  px-2">
       <div>
-        <h2 className="mb-3 font-semibold  text-[clamp(1.25rem,1.7vw,3rem)] px-2">
+        <h2 className="mb-3 font-semibold text-[clamp(1.25rem,1.7vw,3rem)] px-2">
           Featured Products
         </h2>
       </div>
       <div className="flex flex-wrap justify-around gap-2 mx-auto ">
         {featuredProductList.map((el) => {
           return (
-            <div className="h-70 w-[48%]  rounded-xl shadow-sm md:w-[32%] ">
+            <div className="h-70 w-[48%]  rounded-xl shadow-sm md:w-[32%] mb-2">
               <div className="h-[70%]">
                 <img
                   className="w-full h-full object-contain bg-amber-50 rounded-t-xl"

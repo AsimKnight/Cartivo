@@ -4,6 +4,7 @@ import CategoriesSection from "../COMPONENTS/CategoriesSection";
 import HeroImage from "../COMPONENTS/HeroImage";
 import BestDeals from "../COMPONENTS/BestDeals";
 import FeaturedProductSection from "../COMPONENTS/FeaturedProductSection";
+import ElectronicsSection from "../COMPONENTS/ElectronicsSection";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -139,6 +140,7 @@ const Home = () => {
       <CategoriesSection categories={categories} />
       <BestDeals deals={deals} setDeals={setDeals} />
       <FeaturedProductSection products={products} />
+      <ElectronicsSection />
     </div>
   );
 };

@@ -43,7 +43,7 @@ const BestDeals = ({ deals, setDeals }) => {
           <div className=" shadow-sm deals-card  shrink-0 w-[45%] h-75  bg-mauve-50 rounded-xl md:w-[32%] lg:w-[24%] lg:hover:scale-102 lg:transition-all">
             <div className=" w-full h-[55%] md:h-[60%]">
               <img
-                className="w-full h-full object-cover md:object-contain rounded-t-xl bg-blue-50"
+                className="w-full h-full  object-contain rounded-t-xl bg-blue-50"
                 src={el.images[0]}
                 alt={el.name + "-image"}
               />
